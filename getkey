@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IDKluahub | Get Key</title>
+
+  <link rel="icon" type="image/png" href="/idklua.png">
+  <link rel="apple-touch-icon" href="/idklua.png">
+
+  <style>
+    body{
+      margin:0;
+      font-family:Arial, sans-serif;
+      background:#070812;
+      color:white;
+      overflow-x:hidden;
+    }
+    .bg{
+      position:fixed;
+      inset:-200px;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(124,77,255,.45), transparent 50%),
+        radial-gradient(circle at 80% 30%, rgba(0,214,255,.35), transparent 50%),
+        radial-gradient(circle at 50% 90%, rgba(255,70,120,.18), transparent 60%);
+      animation: floatBG 8s ease-in-out infinite alternate;
+      z-index:-1;
+    }
+    @keyframes floatBG { 0%{transform:translateY(0)} 100%{transform:translateY(-30px)} }
+
+    .wrap{
+      max-width:1000px;
+      margin:0 auto;
+      padding:24px;
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+    }
+
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      padding:14px 16px;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.05);
+      backdrop-filter: blur(12px);
+      box-shadow:0 12px 30px rgba(0,0,0,.45);
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    .logo{
+      width:42px;
+      height:42px;
+      border-radius:14px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.05);
+      box-shadow:0 12px 25px rgba(124,77,255,.18);
+      animation:pulse 2.8s ease-in-out infinite;
+    }
+    .logo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    @keyframes pulse{
+      0%,100%{transform:scale(1)}
+      50%{transform:scale(1.06)}
+    }
+
+    .brand h1{margin:0;font-size:18px;font-weight:900}
+    .brand p{margin:2px 0 0;color:rgba(255,255,255,.65);font-size:12px}
+
+    .nav{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .nav a{
+      text-decoration:none;
+      color:white;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.06);
+      font-weight:bold;
+      font-size:13px;
+      transition:.15s;
+    }
+    .nav a:hover{ background:rgba(255,255,255,.12); transform:translateY(-1px); }
+
+    .grid{
+      margin-top:8px;
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:14px;
+    }
+
+    .card{
+      padding:22px;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.05);
+      backdrop-filter: blur(12px);
+      box-shadow:0 12px 30px rgba(0,0,0,.45);
+      opacity:0;
+      transform:translateY(12px);
+      animation:fadeUp .6s ease forwards;
+    }
+    .card.delay{animation-delay:.15s}
+    .card.delay2{animation-delay:.3s}
+
+    @keyframes fadeUp{ to{opacity:1;transform:translateY(0)} }
+
+    h2{
+      margin:0;
+      font-size:34px;
+      font-weight:900;
+      letter-spacing:-.6px;
+    }
+    p{
+      margin:10px 0 0;
+      color:rgba(255,255,255,.72);
+      line-height:1.65;
+      font-size:14px;
+      max-width:70ch;
+    }
+
+    .btnRow{
+      margin-top:14px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .btn{
+      flex:1;
+      display:inline-flex;
+      justify-content:center;
+      align-items:center;
+      padding:12px 14px;
+      border-radius:14px;
+      font-weight:bold;
+      font-size:14px;
+      border:1px solid rgba(255,255,255,.12);
+      text-decoration:none;
+      color:white;
+      cursor:pointer;
+      transition:.15s;
+      background:rgba(255,255,255,.06);
+    }
+    .btn.primary{
+      border:none;
+      background:linear-gradient(135deg,#7c4dff,#00d6ff);
+      box-shadow:0 14px 24px rgba(0,214,255,.12);
+    }
+    .btn:hover{transform:translateY(-1px);opacity:.96}
+
+    input{
+      width:100%;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.15);
+      background:#0b0d15;
+      color:white;
+      font-weight:bold;
+      outline:none;
+      box-sizing:border-box;
+      margin-top:12px;
+    }
+
+    .output{
+      margin-top:12px;
+      padding:12px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.12);
+      background:#0b0d15;
+      font-family:monospace;
+      font-size:13px;
+      word-break:break-all;
+      min-height:44px;
+      display:flex;
+      align-items:center;
+    }
+
+    .notice{
+      margin-top:12px;
+      padding:12px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.05);
+      color:rgba(255,255,255,.78);
+      font-size:13px;
+      line-height:1.55;
+    }
+
+    .side h3{margin:0;font-size:16px;font-weight:900}
+    .side ul{margin:10px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+    .side li{
+      padding:12px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      color:rgba(255,255,255,.78);
+      font-size:13px;
+      line-height:1.55;
+    }
+
+    .footer{
+      margin-top:auto;
+      text-align:center;
+      color:rgba(255,255,255,.55);
+      font-size:12px;
+      padding:14px 0 0;
+    }
+
+    @media(max-width:900px){
+      .grid{grid-template-columns:1fr}
+      h2{font-size:28px}
+      .nav{width:100%}
+      .nav a{flex:1;text-align:center}
+      .topbar{flex-direction:column;align-items:flex-start}
+      .btn{flex:unset;width:100%}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg"></div>
+
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <div class="logo">
+          <img src="/idklua.png" alt="IDKluahub Logo">
+        </div>
+        <div>
+          <h1>IDKluahub</h1>
+          <p>Key System</p>
+        </div>
+      </div>
+
+      <div class="nav">
+        <a href="/">Home</a>
+        <a href="/getkey">Get Key</a>
+        <a href="/search">Search</a>
+        <a href="/download">Download</a>
+      </div>
+    </div>
+
+    <div class="grid">
+      <!-- Main -->
+      <div class="card">
+        <h2>Generate Your Key</h2>
+        <p>
+          Use the checkpoint link, finish it, then paste your token below to generate a key.
+        </p>
+
+        <div class="btnRow">
+          <button class="btn" id="copyLinkBtn">Copy Checkpoint Link</button>
+          <a class="btn" id="openLinkBtn" href="https://work.ink/21ta/idkluakey-1" target="_blank" rel="noopener">Open Link</a>
+        </div>
+
+        <input id="tokenInput" placeholder="Paste Work.ink token here...">
+
+        <div class="btnRow">
+          <button class="btn primary" id="genBtn">Generate Key</button>
+          <button class="btn" id="copyKeyBtn">Copy Key</button>
+          <a class="btn" id="downloadBtn" href="/download" style="opacity:.4;pointer-events:none;">Download</a>
+        </div>
+
+        <div class="output" id="keyBox">Your key will show here...</div>
+        <div class="notice" id="notice">Waiting for token...</div>
+      </div>
+
+      <!-- Side -->
+      <div class="card delay side">
+        <h3>How it works</h3>
+        <ul>
+          <li><b>1)</b> Click <b>Open Link</b> and complete the checkpoint.</li>
+          <li><b>2)</b> Copy your token and paste it into the box.</li>
+          <li><b>3)</b> Click <b>Generate Key</b> and copy the key.</li>
+          <li><b>4)</b> Download unlocks after a key is generated.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer card delay2">
+      © <span id="year"></span> IDKluahub • All rights reserved
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const KEY_LINK = "https://work.ink/21ta/idkluakey-1";
+    const WORKER_GEN = "https://idklua-key.carterjam28yt.workers.dev/genkey";
+
+    const copyLinkBtn = document.getElementById("copyLinkBtn");
+    const tokenInput = document.getElementById("tokenInput");
+    const genBtn = document.getElementById("genBtn");
+    const keyBox = document.getElementById("keyBox");
+    const copyKeyBtn = document.getElementById("copyKeyBtn");
+    const notice = document.getElementById("notice");
+    const downloadBtn = document.getElementById("downloadBtn");
+
+    let key = null;
+
+    function setNotice(text, ok){
+      notice.textContent = text;
+      notice.style.borderColor = ok ? "rgba(0,214,255,.45)" : "rgba(255,70,120,.45)";
+      notice.style.background = ok ? "rgba(0,214,255,.10)" : "rgba(255,70,120,.10)";
+    }
+
+    copyLinkBtn.addEventListener("click", async () => {
+      try{
+        await navigator.clipboard.writeText(KEY_LINK);
+        setNotice("Copied checkpoint link ✅", true);
+      }catch{
+        setNotice("Copy failed. Link: " + KEY_LINK, false);
+      }
+    });
+
+    genBtn.addEventListener("click", async () => {
+      const token = tokenInput.value.trim();
+      if(!token || token.length < 10){
+        setNotice("Paste a valid token.", false);
+        return;
+      }
+
+      setNotice("Generating key...", true);
+      genBtn.disabled = true;
+      genBtn.textContent = "Generating...";
+
+      try{
+        const res = await fetch(WORKER_GEN, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ token })
+        });
+
+        const data = await res.json();
+
+        if(!data.ok){
+          setNotice("❌ " + (data.error || "Token invalid"), false);
+          return;
+        }
+
+        key = data.key;
+        keyBox.textContent = key;
+
+        downloadBtn.style.opacity = "1";
+        downloadBtn.style.pointerEvents = "auto";
+
+        const exp = data.expiresAt ? new Date(data.expiresAt).toLocaleString() : "Unknown";
+        setNotice("✅ Key generated! Expires: " + exp, true);
+
+      }catch(e){
+        setNotice("Server error. Try again.", false);
+      }finally{
+        genBtn.disabled = false;
+        genBtn.textContent = "Generate Key";
+      }
+    });
+
+    copyKeyBtn.addEventListener("click", async () => {
+      if(!key){
+        setNotice("Generate a key first.", false);
+        return;
+      }
+      try{
+        await navigator.clipboard.writeText(key);
+        setNotice("Copied ✅", true);
+      }catch{
+        setNotice("Copy failed. Copy manually.", false);
+      }
+    });
+  </script>
+</body>
+</html>
