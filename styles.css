@@ -1,0 +1,263 @@
+/* IDKluahub Key Website - Static Template */
+:root{
+  --bg:#05060a;
+  --card:rgba(255,255,255,.06);
+  --card2:rgba(255,255,255,.08);
+  --border:rgba(255,255,255,.12);
+  --text:#f3f6ff;
+  --muted:rgba(243,246,255,.72);
+  --shadow: 0 10px 30px rgba(0,0,0,.45);
+  --radius:18px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+.bg{
+  position:fixed; inset:-100px;
+  background:
+    radial-gradient(800px 500px at 15% 20%, rgba(130,87,255,.35), transparent 55%),
+    radial-gradient(800px 500px at 85% 30%, rgba(0,214,255,.25), transparent 55%),
+    radial-gradient(800px 500px at 50% 90%, rgba(255,70,120,.18), transparent 55%);
+  filter: blur(0px);
+  z-index:-1;
+}
+
+.container{
+  width:min(1120px, 92%);
+  margin: 28px auto 70px;
+}
+
+.header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding:14px 14px 16px;
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  background:rgba(255,255,255,.04);
+  backdrop-filter: blur(14px);
+  box-shadow: var(--shadow);
+}
+
+.logo{display:flex; align-items:center; gap:12px}
+.logoMark{
+  width:42px;height:42px;border-radius:14px;
+  background: linear-gradient(135deg, rgba(130,87,255,1), rgba(0,214,255,1));
+  box-shadow: 0 10px 25px rgba(130,87,255,.25);
+}
+.logoText h1{font-size:18px; font-weight:800; letter-spacing:.2px}
+.logoText p{font-size:12px; color:var(--muted); margin-top:2px}
+
+.nav{display:flex; gap:16px; flex-wrap:wrap}
+.nav a{
+  color:var(--muted);
+  text-decoration:none;
+  font-weight:600;
+  font-size:13px;
+  padding:10px 12px;
+  border-radius:12px;
+  transition:.2s;
+}
+.nav a:hover{
+  color:var(--text);
+  background:rgba(255,255,255,.06);
+}
+
+.hero{
+  display:grid;
+  grid-template-columns: 1.15fr .85fr;
+  gap:22px;
+  margin-top:22px;
+}
+
+.heroLeft{
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  background:rgba(255,255,255,.04);
+  backdrop-filter: blur(14px);
+  padding:26px;
+  box-shadow: var(--shadow);
+}
+
+.heroLeft h2{
+  font-size:36px;
+  line-height:1.15;
+  letter-spacing:-.6px;
+}
+.heroLeft p{
+  margin-top:12px;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.65;
+  max-width:62ch;
+}
+
+.heroButtons{display:flex; gap:12px; margin-top:18px; flex-wrap:wrap}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:12px 16px;
+  border-radius:14px;
+  font-weight:700;
+  font-size:14px;
+  text-decoration:none;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.05);
+  color:var(--text);
+  cursor:pointer;
+  transition: transform .16s ease, background .16s ease, border .16s ease;
+}
+.btn:hover{transform: translateY(-1px); background:rgba(255,255,255,.08)}
+.btn:active{transform: translateY(0px) scale(.99)}
+.btn.primary{
+  border:1px solid rgba(130,87,255,.5);
+  background: linear-gradient(135deg, rgba(130,87,255,1), rgba(0,214,255,1));
+  box-shadow: 0 15px 30px rgba(0,214,255,.10);
+}
+.btn.ghost{
+  background:rgba(255,255,255,.04);
+}
+.btn.danger{
+  border:1px solid rgba(255,70,120,.45);
+  background: rgba(255,70,120,.14);
+}
+
+.miniStats{
+  margin-top:22px;
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:12px;
+}
+.statCard{
+  padding:14px;
+  border-radius:16px;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.04);
+}
+.statNumber{display:block; font-weight:800; font-size:18px}
+.statLabel{display:block; margin-top:3px; color:var(--muted); font-size:12px}
+
+.heroRight{
+  display:flex;
+}
+.glassCard{
+  width:100%;
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  background:rgba(255,255,255,.04);
+  backdrop-filter: blur(14px);
+  padding:22px;
+  box-shadow: var(--shadow);
+}
+.glassCard h3{font-size:16px; font-weight:800}
+.steps{
+  margin-top:14px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  padding-left:0;
+  list-style:none;
+}
+.steps li{
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+  color:var(--muted);
+  line-height:1.55;
+  font-size:13.5px;
+}
+.steps li span{
+  width:28px;height:28px;
+  border-radius:12px;
+  flex:0 0 auto;
+  display:grid;
+  place-items:center;
+  font-weight:900;
+  color:var(--text);
+  background:rgba(255,255,255,.07);
+  border:1px solid var(--border);
+}
+
+.checkpoint{margin-top:16px}
+.hint{margin-top:10px; font-size:12px; color:rgba(243,246,255,.55)}
+code{
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  background:rgba(255,255,255,.05);
+  padding:3px 6px;
+  border:1px solid var(--border);
+  border-radius:10px;
+}
+
+.keySection{
+  margin-top:22px;
+}
+.keyCard{
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  background:rgba(255,255,255,.04);
+  backdrop-filter: blur(14px);
+  padding:22px;
+  box-shadow: var(--shadow);
+}
+.keyCard h3{font-size:18px; font-weight:900}
+.keyCard .sub{color:var(--muted); margin-top:6px; font-size:13.5px}
+
+.keyRow{
+  margin-top:14px;
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+#keyBox{
+  flex:1;
+  min-width: 240px;
+  padding:12px 14px;
+  font-size:14px;
+  font-weight:700;
+  border-radius:14px;
+  border:1px solid var(--border);
+  background:rgba(0,0,0,.20);
+  color:var(--text);
+  outline:none;
+}
+
+.notice{
+  margin-top:14px;
+  padding:12px 14px;
+  border-radius:14px;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.05);
+  color:rgba(243,246,255,.75);
+  font-size:13px;
+}
+
+.footer{margin-top:22px}
+.footerCard{
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  background:rgba(255,255,255,.04);
+  backdrop-filter: blur(14px);
+  padding:22px;
+  box-shadow: var(--shadow);
+}
+.footerCard h4{font-size:16px; font-weight:900}
+.footerCard p{margin-top:8px; color:var(--muted); font-size:13.5px; line-height:1.65}
+.footerButtons{display:flex; gap:12px; margin-top:14px; flex-wrap:wrap}
+.fine{margin-top:16px; font-size:12px; color:rgba(243,246,255,.55)}
+
+@media (max-width: 900px){
+  .hero{grid-template-columns:1fr}
+  .heroLeft h2{font-size:30px}
+  .miniStats{grid-template-columns:1fr; gap:10px}
+}
