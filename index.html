@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IDKluahub | Key System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg"></div>
+
+  <main class="container">
+    <header class="header">
+      <div class="logo">
+        <span class="logoMark"></span>
+        <div class="logoText">
+          <h1>IDKluahub</h1>
+          <p>Key System</p>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="#steps">Steps</a>
+        <a href="#key">Get Key</a>
+        <a href="#help">Help</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="heroLeft">
+        <h2>Generate your key in seconds.</h2>
+        <p>
+          Complete the steps below, then click <b>Generate Key</b> to receive your access key.
+          This page is fully static and ready to host on GitHub Pages / Netlify.
+        </p>
+
+        <div class="heroButtons">
+          <a class="btn primary" href="#key">Get Key</a>
+          <a class="btn ghost" href="#help">Join Discord</a>
+        </div>
+
+        <div class="miniStats">
+          <div class="statCard">
+            <span class="statNumber" id="statKeys">1,204</span>
+            <span class="statLabel">Keys generated</span>
+          </div>
+          <div class="statCard">
+            <span class="statNumber" id="statUptime">99.9%</span>
+            <span class="statLabel">Uptime</span>
+          </div>
+          <div class="statCard">
+            <span class="statNumber">Fast</span>
+            <span class="statLabel">Mobile friendly</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="heroRight">
+        <div class="glassCard" id="steps">
+          <h3>How to get your key</h3>
+          <ol class="steps">
+            <li><span>1</span> Click <b>Start</b> and complete the checkpoint (Linkvertise / shortlink).</li>
+            <li><span>2</span> Return here and press <b>Generate Key</b>.</li>
+            <li><span>3</span> Copy your key and paste it into the hub.</li>
+          </ol>
+          <div class="checkpoint">
+            <button class="btn primary" id="startBtn">Start Checkpoint</button>
+            <p class="hint">Tip: Replace the checkpoint link in <code>script.js</code> with your own.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="keySection" id="key">
+      <div class="keyCard">
+        <h3>Your Access Key</h3>
+        <p class="sub">Generate and copy your key below.</p>
+
+        <div class="keyRow">
+          <input id="keyBox" type="text" value="••••••••••••••••" readonly />
+          <button class="btn primary" id="genBtn">Generate Key</button>
+        </div>
+
+        <div class="keyRow">
+          <button class="btn ghost" id="copyBtn">Copy Key</button>
+          <button class="btn danger" id="resetBtn">Reset</button>
+        </div>
+
+        <div class="notice" id="notice">Complete the checkpoint, then generate your key.</div>
+      </div>
+    </section>
+
+    <section class="footer" id="help">
+      <div class="footerCard">
+        <h4>Need help?</h4>
+        <p>
+          Add your Discord invite link and script download button here.
+          This is a static template – if you want a real backend key system later, tell me and I can build it.
+        </p>
+        <div class="footerButtons">
+          <a class="btn primary" href="#" id="discordLink">Join Discord</a>
+          <a class="btn ghost" href="#" id="downloadLink">Download Script</a>
+        </div>
+        <p class="fine">© <span id="year"></span> IDKluahub. All rights reserved.</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
